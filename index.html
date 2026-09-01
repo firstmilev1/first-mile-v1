@@ -1,0 +1,489 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="theme-color" content="#0e1014">
+
+<title>First Mile</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#0e1014;color:#f5f7fa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+
+#app{max-width:520px;margin:auto;min-height:100vh;padding:28px 18px 100px}
+
+.brand{font-size:13px;letter-spacing:.16em;font-weight:900;color:#ffbf47}
+
+h1{font-size:32px;margin:8px 0}
+
+.sub{color:#aeb6c2;line-height:1.5;margin-bottom:22px}
+
+.grid,.actions{display:grid;gap:12px}
+
+button{font:inherit}
+
+.btn,.choice{width:100%;border:1px solid #303743;background:#191d24;color:white;border-radius:18px;padding:18px;text-align:left;font-size:17px;font-weight:800}
+
+.btn:active,.choice:active{transform:scale(.98);background:#222832}
+
+.btn span{display:block}
+
+.small{color:#aeb6c2;font-size:12px;font-weight:600;margin-top:5px}
+
+.green{border-left:5px solid #55d68a}
+
+.amber{border-left:5px solid #ffbf47}
+
+.blue{border-left:5px solid #6fb7ff}
+
+.red{border-left:5px solid #ff6b6b}
+
+.purple{border-left:5px solid #b89cff}
+
+.top{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+
+.back{width:44px;height:44px;border-radius:14px;border:1px solid #303743;background:#191d24;color:white;font-size:22px}
+
+.st{font-size:23px;font-weight:900}
+
+.card{background:#191d24;border:1px solid #303743;border-radius:18px;padding:18px;margin:12px 0}
+
+.card h3{margin:0 0 8px}
+
+.card p{margin:0;line-height:1.5;color:#d5dae1}
+
+.tip{border-left:4px solid #ffbf47}
+
+ul{padding-left:20px;line-height:1.6}
+
+.footer{position:fixed;bottom:0;left:0;right:0;background:#0e1014ee;border-top:1px solid #303743;padding:10px 18px 18px;display:flex;gap:10px}
+
+.foot{flex:1;border:1px solid #303743;background:#191d24;color:white;border-radius:14px;padding:12px;font-weight:800}
+
+.ask{background:#ffbf47;color:#111;border:0}
+
+.note{font-size:12px;color:#8f98a5;margin-top:18px;line-height:1.4}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script>
+
+let current="home",history=[];
+
+const app=document.getElementById("app");
+
+function page(title,body){
+
+return `<div class="top">
+
+<button class="back" onclick="back()">‹</button>
+
+<div class="st">${title}</div>
+
+</div>${body}`;
+
+}
+
+const screens={
+
+home:()=>`
+
+<div class="brand">FIRST MILE</div>
+
+<h1>The Driver's Mate</h1>
+
+<div class="sub">
+
+No panic. No judgement. Just practical help.<br>
+
+<b>Every driver starts somewhere.</b>
+
+</div>
+
+<div class="grid">
+
+<button class="btn green" onclick="go('shift')">
+
+🟢 STARTING MY SHIFT
+
+<span class="small">Get sorted before the wheels turn.</span>
+
+</button>
+
+<button class="btn amber" onclick="go('delivery')">
+
+🅿️ DELIVERY / COLLECTION
+
+<span class="small">Arrive, check in, position and unload.</span>
+
+</button>
+
+<button class="btn blue" onclick="go('time')">
+
+⏱️ KEEPING TRACK OF MY TIME
+
+<span class="small">Watch both clocks.</span>
+
+</button>
+
+<button class="btn red" onclick="go('wrong')">
+
+⚠️ SOMETHING'S GONE WRONG
+
+<span class="small">Stop. Stay safe. Communicate.</span>
+
+</button>
+
+<button class="btn purple" onclick="go('basics')">
+
+🎓 NEW DRIVER BASICS
+
+<span class="small">The stuff somebody should just explain.</span>
+
+</button>
+
+</div>
+
+<div class="note">
+
+Prototype V1. Company procedures and current official guidance take priority.
+
+</div>`,
+
+delivery:()=>page("Delivery / Collection",`
+
+<div class="card">
+
+<h3>First job: don't rush.</h3>
+
+<p>Pull up somewhere safe and appropriate. Keep access clear. Have your paperwork, booking details or reference ready.</p>
+
+</div>
+
+<div class="actions">
+
+<button class="choice" onclick="go('arrived')">📍 I've arrived</button>
+
+<button class="choice" onclick="go('lost')">🧭 I can't find the place</button>
+
+<button class="choice" onclick="go('late')">⏰ I'm running late</button>
+
+</div>`),
+
+arrived:()=>page("I've Arrived",`
+
+<div class="card tip">
+
+<h3>Before you jump out…</h3>
+
+<p>Check site rules and required PPE. Hi-vis, boots, hard hat, glasses — requirements vary.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Find out where they want you.</h3>
+
+<p>Reception, goods-in, gatehouse, security or whoever is unloading you. Don't guess and don't blindly follow the wagon in front.</p>
+
+</div>
+
+<div class="actions">
+
+<button class="choice" onclick="go('where')">🤷 I don't know where to go</button>
+
+<button class="choice" onclick="go('position')">🚛 They've told me where to position</button>
+
+</div>`),
+
+where:()=>page("I Don't Know Where To Go",`
+
+<div class="card">
+
+<h3>Totally normal.</h3>
+
+<p>Look for reception, goods-in, gatehouse or security. If the forklift driver has disappeared into another dimension, ask somebody on site.</p>
+
+</div>
+
+<div class="card tip">
+
+<p><b>Try:</b><br><br>“Hi, I'm here with a delivery or collection for ___ — where would you like me to go?”</p>
+
+</div>
+
+<button class="choice" onclick="go('position')">👍 Found someone</button>`),
+
+position:()=>page("Positioning The Wagon",`
+
+<div class="card">
+
+<h3>Before manoeuvring</h3>
+
+<p>Ask exactly where they want the vehicle. Check pedestrians, space, obstructions and site rules.</p>
+
+</div>
+
+<div class="actions">
+
+<button class="choice" onclick="go('reverse')">↩️ I need to reverse</button>
+
+<button class="choice" onclick="go('unload')">✅ I'm positioned</button>
+
+</div>`),
+
+reverse:()=>page("Reversing",`
+
+<div class="card tip">
+
+<h3>GOAL — Get Out And Look.</h3>
+
+<p>If you're not sure what's behind or beside you, stop and look. No rush. A delivery time isn't worth an accident.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Banksman?</h3>
+
+<p>If the site requires one, follow site procedure. If you lose sight of them: <b>STOP.</b></p>
+
+</div>
+
+<div class="card">
+
+<h3>Brain freeze?</h3>
+
+<p>Hands at the bottom of the wheel. Want the trailer left? Move your left hand upward. Trailer right? Right hand upward. Small corrections.</p>
+
+</div>
+
+<button class="choice" onclick="go('unload')">✅ I'm in position</button>`),
+
+unload:()=>page("Ready For Unloading",`
+
+<div class="card">
+
+<h3>Follow the site's procedure.</h3>
+
+<p>Some sites want you in the cab. Others may want keys handed in or displayed.</p>
+
+</div>
+
+<div class="card">
+
+<ul>
+
+<li>Correct goods unloaded?</li>
+
+<li>Remaining load secure?</li>
+
+<li>Straps or restraints sorted?</li>
+
+<li>Curtains or doors secure?</li>
+
+<li>Paperwork / POD sorted?</li>
+
+</ul>
+
+</div>
+
+<button class="choice" onclick="go('home')">🚛 Job done</button>`),
+
+lost:()=>page("Can't Find The Drop",`
+
+<div class="card">
+
+<h3>Don't commit to a bad road because a map says so.</h3>
+
+<p>Stop somewhere safe. Check the address and instructions. Call the customer or office.</p>
+
+</div>
+
+<div class="card tip">
+
+<p>On farms or rural drops, ask about the correct entrance and HGV access before disappearing down a single-track lane and becoming TikTok famous.</p>
+
+</div>`),
+
+late:()=>page("Running Late",`
+
+<div class="card">
+
+<h3>Don't try to win the time back on the road.</h3>
+
+<p>Call the office. Give a realistic ETA and communicate rather than rush.</p>
+
+</div>
+
+<div class="card tip">
+
+<p><b>A timed delivery isn't worth an accident.</b></p>
+
+</div>`),
+
+shift:()=>page("Starting My Shift",`
+
+<div class="card">
+
+<ul>
+
+<li>Clock in if required</li>
+
+<li>Collect paperwork / job details</li>
+
+<li>Get keys / company device</li>
+
+<li>Check required documents</li>
+
+<li>Insert tacho card where required</li>
+
+<li>Complete company walkaround / defect check</li>
+
+<li>Check trailer and load security</li>
+
+</ul>
+
+</div>
+
+<div class="card tip">
+
+<p>If something doesn't look right, don't move it and hope for the best. <b>Ask.</b></p>
+
+</div>`),
+
+time:()=>page("Keeping Track Of My Time",`
+
+<div class="card">
+
+<h3>Remember: two clocks.</h3>
+
+<p>Your driving time and your working time can catch you at different points. Ask yourself: <b>which clock runs out first?</b></p>
+
+</div>
+
+<div class="card tip">
+
+<p>Don't leave finding parking until the last second. Follow current rules and your company procedure.</p>
+
+</div>`),
+
+wrong:()=>page("Something's Gone Wrong",`
+
+<div class="card tip">
+
+<h3>STOP → SAFE → COMMUNICATE</h3>
+
+<p>Don't make a stressful situation worse by rushing or guessing.</p>
+
+</div>
+
+<div class="actions">
+
+<button class="choice" onclick="go('lost')">🧭 Lost / wrong entrance</button>
+
+<button class="choice" onclick="go('late')">⏰ Running late</button>
+
+<button class="choice" onclick="ask()">📞 I'm unsure what to do</button>
+
+</div>`),
+
+basics:()=>page("New Driver Basics",`
+
+<div class="card">
+
+<h3>GOAL</h3>
+
+<p><b>Get Out And Look.</b> Simple and useful.</p>
+
+</div>
+
+<div class="card">
+
+<h3>BLACK — trailer memory aid</h3>
+
+<p>Brake · Legs · Air · Clip · Kingpin.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Golden rule</h3>
+
+<p>Never done it before? Ask. Experienced drivers ask too. There's no prize for pretending you know.</p>
+
+</div>`)
+
+};
+
+function go(id){
+
+if(id==="home"){
+
+history=[];
+
+}else{
+
+history.push(current);
+
+}
+
+current=id;
+
+render();
+
+window.scrollTo(0,0);
+
+}
+
+function back(){
+
+current=history.pop()||"home";
+
+render();
+
+window.scrollTo(0,0);
+
+}
+
+function ask(){
+
+alert("NOT SURE? ASK.\\n\\nStop somewhere safe. Contact your office, ask somebody on site, or check the appropriate company or official guidance. Don't guess just to save face.");
+
+}
+
+function render(){
+
+app.innerHTML=screens[current]()+`
+
+<div class="footer">
+
+<button class="foot" onclick="go('home')">🏠 Home</button>
+
+<button class="foot ask" onclick="ask()">❓ ASK</button>
+
+</div>`;
+
+}
+
+render();
+
+</script>
+
+</body>
+
+</html>
