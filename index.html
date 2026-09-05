@@ -598,7 +598,7 @@ wrong:()=>page("Something's Gone Wrong",`
 
 <button class="choice" onclick="go('accessUnsure')">🚛 I'm not sure I can get the wagon somewhere safely</button>
 
-<button class="choice">📦 There's a problem with the load or delivery</button>
+<button class="choice" onclick="go('loadProblem')">📦 There's a problem with the load or delivery</button>
 
 <button class="choice">⏱️ I'm worried about my hours</button>
 
@@ -695,6 +695,42 @@ accessUnsure:()=>page("Not Sure I Can Get In Safely",`
 <h3>Still not happy?</h3>
 
 <p>Don't force it. Ask the site or call your office and agree another way in.</p>
+
+</div>
+
+`),
+
+loadProblem:()=>page("Problem With The Load Or Delivery",`
+
+<div class="card">
+
+<h3>Don't argue it out.</h3>
+
+<p>If something doesn't match, is damaged, missing, refused or the customer disputes the delivery, stop and get it sorted before leaving.</p>
+
+</div>
+
+<div class="card tip">
+
+<h3>Get the facts.</h3>
+
+<p>Check the paperwork, pallet or item count and what the customer says is wrong. Take photos where appropriate so you've got a clear record of what happened.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Call the office.</h3>
+
+<p>Tell them exactly what's happened and follow their instructions. Don't agree to shortages, damage, returns or changes yourself if you're not authorised to.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Before you leave.</h3>
+
+<p>Make sure any shortage, refusal, damage or other issue is recorded correctly on the paperwork or POD. Keep any photos you need and make sure the remaining load is secure.</p>
 
 </div>
 
