@@ -184,7 +184,7 @@ delivery:()=>page("Delivery / Collection",`
 
 </div>`),
 
-arrived:()=>page("I've Arrived",`
+arrivedOld:()=>page("I've Arrived",`
 
 <div class="card tip">
 
@@ -209,7 +209,55 @@ arrived:()=>page("I've Arrived",`
 <button class="choice" onclick="go('position')">🚛 They've told me where to position</button>
 
 </div>`),
+arrived:()=>page("I've Arrived",`
 
+<div class="card">
+
+<h3>First things first.</h3>
+
+<p>Pull up somewhere safe and appropriate. Keep entrances, exits and access routes clear. Don't block pavements or commit the truck to somewhere you're not sure about.</p>
+
+</div>
+
+<div class="card tip">
+
+<h3>Before you jump out...</h3>
+
+<p>Check the site's rules and required PPE. Hi-vis is usually the minimum, but follow whatever the site requires.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Find the right person.</h3>
+
+<p>Look for a forklift driver, reception, goods-in, gatehouse or security. Have your paperwork or delivery reference ready.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Before moving into position.</h3>
+
+<p>Ask where they want you and how they want you positioned. If anything is unclear, ask before moving the truck.</p>
+
+</div>
+
+<div class="card tip">
+
+<h3>Don't let anyone rush you.</h3>
+
+<p>If you're unsure about the space, stop and GOAL — Get Out And Look. It's better to check twice than hit something once.</p>
+
+</div>
+
+<div class="actions">
+
+<button class="choice" onclick="go('where')">🤷 I don't know where to go</button>
+
+<button class="choice" onclick="go('position')">🚛 I know where they want me</button>
+
+</div>`),
 where:()=>page("I Don't Know Where To Go",`
 
 <div class="card">
