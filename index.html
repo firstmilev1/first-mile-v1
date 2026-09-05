@@ -580,9 +580,35 @@ wrong:()=>page("Something's Gone Wrong",`
 
 <button class="choice" onclick="go('late')">⏰ Running late</button>
 
-<button class="choice" onclick="ask()">📞 I'm unsure what to do</button>
+<button class="choice" onclick="go('unsure')">📞 I'm unsure what to do</button>
 
-</div>`),
+</div>`),unsure:()=>page("I'm Unsure What To Do",`
+
+<div class="card">
+
+<h3>What are you unsure about?</h3>
+
+<p>Pick the closest option. You don't need to guess your way through it.</p>
+
+</div>
+
+<div class="actions">
+
+<button class="choice">🏭 I'm at a customer and don't know what they want</button>
+
+<button class="choice">🚛 I'm not sure I can get the wagon somewhere safely</button>
+
+<button class="choice">📦 There's a problem with the load or delivery</button>
+
+<button class="choice">⏱️ I'm worried about my hours</button>
+
+<button class="choice">🔧 There's a problem with the vehicle</button>
+
+<button class="choice" onclick="ask()">🤷 Something else</button>
+
+</div>
+
+`),
 
 basics:()=>page("New Driver Basics",`
 
