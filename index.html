@@ -602,7 +602,7 @@ wrong:()=>page("Something's Gone Wrong",`
 
 <button class="choice" onclick="go('hoursWorry')">⏱️ I'm worried about my hours</button>
 
-<button class="choice">🔧 There's a problem with the vehicle</button>
+<button class="choice" onclick="go('vehicleProblem')">🔧 There's a problem with the vehicle</button>
 
 <button class="choice" onclick="ask()">🤷 Something else</button>
 
@@ -767,6 +767,42 @@ hoursWorry:()=>page("Worried About My Hours",`
 <h3>Not sure what the tacho is telling you?</h3>
 
 <p>Stop somewhere safe and check before carrying on. If you're still unsure, contact your office or transport manager rather than guessing.</p>
+
+</div>
+
+`),
+
+vehicleProblem:()=>page("Problem With The Vehicle",`
+
+<div class="card">
+
+<h3>Something doesn't feel right?</h3>
+
+<p>If you notice a warning light, unusual noise, damage, tyre problem or anything else that concerns you, don't just ignore it and carry on.</p>
+
+</div>
+
+<div class="card tip">
+
+<h3>If you think it may be unsafe — stop.</h3>
+
+<p>Find somewhere safe to stop if you can. Don't continue driving a vehicle you believe may be unsafe just because you're worried about delaying the job.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Tell the office.</h3>
+
+<p>Explain exactly what you've noticed and where you are. Follow your company's defect or breakdown procedure and get advice before continuing.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Don't try to diagnose it yourself.</h3>
+
+<p>You don't need to know what's causing the problem. Report what you can see, hear or feel and let the appropriate person decide what happens next.</p>
 
 </div>
 
