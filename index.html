@@ -594,7 +594,7 @@ wrong:()=>page("Something's Gone Wrong",`
 
 <div class="actions">
 
-<button class="choice">🏭 I'm at a customer and don't know what they want</button>
+<button class="choice" onclick="go('customerUnsure')">🏭 I'm at a customer and don't know what they want</button>
 
 <button class="choice">🚛 I'm not sure I can get the wagon somewhere safely</button>
 
@@ -605,6 +605,40 @@ wrong:()=>page("Something's Gone Wrong",`
 <button class="choice">🔧 There's a problem with the vehicle</button>
 
 <button class="choice" onclick="ask()">🤷 Something else</button>
+
+</div>
+
+`),
+
+customerUnsure:()=>page("Not Sure What The Customer Wants",`
+
+<div class="card">
+
+<h3>Stop and ask.</h3>
+
+<p>Don't move the wagon or start unloading until you know what the site wants you to do.</p>
+
+</div>
+
+<div class="card tip">
+
+<h3>Find the right person.</h3>
+
+<p>Ask reception, goods-in, security or the person unloading you. Have your paperwork or reference ready.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Before you move.</h3>
+
+<p>Ask where they want you positioned, whether there are any site rules you need to follow, and whether they want you to stay in the cab, hand your keys in or wait somewhere else.</p>
+
+</div>
+
+<div class="card">
+
+<p>If you're still unsure, call your office rather than guessing.</p>
 
 </div>
 
