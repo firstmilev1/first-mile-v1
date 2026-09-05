@@ -600,7 +600,7 @@ wrong:()=>page("Something's Gone Wrong",`
 
 <button class="choice" onclick="go('loadProblem')">📦 There's a problem with the load or delivery</button>
 
-<button class="choice">⏱️ I'm worried about my hours</button>
+<button class="choice" onclick="go('hoursWorry')">⏱️ I'm worried about my hours</button>
 
 <button class="choice">🔧 There's a problem with the vehicle</button>
 
@@ -731,6 +731,42 @@ loadProblem:()=>page("Problem With The Load Or Delivery",`
 <h3>Before you leave.</h3>
 
 <p>Make sure any shortage, refusal, damage or other issue is recorded correctly on the paperwork or POD. Keep any photos you need and make sure the remaining load is secure.</p>
+
+</div>
+
+`),
+
+hoursWorry:()=>page("Worried About My Hours",`
+
+<div class="card">
+
+<h3>Don't wait until the clock runs out.</h3>
+
+<p>If you're getting close to a limit or you're not sure what time you have left, find somewhere safe to stop and check your tachograph.</p>
+
+</div>
+
+<div class="card tip">
+
+<h3>Remember — there are different clocks.</h3>
+
+<p>Your driving time and your working time are not the same thing. Check which one is actually causing the problem before deciding what you need to do.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Can't complete the job?</h3>
+
+<p>Call your office early. Tell them what time you have left and where you are. Don't keep driving hoping it'll somehow work itself out.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Not sure what the tacho is telling you?</h3>
+
+<p>Stop somewhere safe and check before carrying on. If you're still unsure, contact your office or transport manager rather than guessing.</p>
 
 </div>
 
