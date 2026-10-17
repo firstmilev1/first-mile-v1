@@ -114,7 +114,7 @@ No panic. No judgement. Just practical help.<br>
 
 </div>
 
-<button class="btn amber" onclick="alert('The Truck Stop is coming soon!')">🚛 THE TRUCK STOP<span class="small">Our driver community — coming soon!</span></button>
+<button class="btn amber" onclick="go('community')">🚛 THE TRUCK STOP<span class="small">Come on in, drivers!</span></button>
 <div class="grid">
 
 <button class="btn green" onclick="go('shift')">
@@ -833,7 +833,33 @@ basics:()=>page("New Driver Basics",`
 
 <p>Never done it before? Ask. Experienced drivers ask too. There's no prize for pretending you know.</p>
 
-</div>`)
+</div>`),
+
+ 
+
+community:()=>page("The Truck Stop",`
+
+  <div class="card">
+
+    <h3>🚛 Welcome to The Truck Stop</h3>
+
+    <p>A place for drivers, new and experienced, to come together.</p>
+
+    <p>Pull up, have a brew and join the conversation!</p>
+
+  </div>
+
+  <div class="card"><h3>💬 General Chat</h3><p>Trucking stories, questions and banter.</p></div>
+
+  <div class="card"><h3>🎓 New Drivers' Corner</h3><p>No question is a silly question.</p></div>
+
+  <div class="card"><h3>🅿️ Parking & Facilities</h3><p>Share useful stops and facilities.</p></div>
+
+  <div class="card"><h3>📍 Delivery Locations</h3><p>Help fellow drivers find their feet.</p></div>
+
+  <div class="card"><h3>🚚 Trucks & Gear</h3><p>Talk trucks, equipment and accessories.</p></div>
+
+`) 
 
 };
 
